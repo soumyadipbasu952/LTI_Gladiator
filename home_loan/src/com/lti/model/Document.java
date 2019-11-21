@@ -1,8 +1,10 @@
 package com.lti.model;
 
+import javax.persistence.OneToOne;
+
 public class Document {
 	
-	private String userId;
+	
 	private String pancard;
 	private String aadharCard;
 	private String voterId;
@@ -12,15 +14,22 @@ public class Document {
 	private String nocFromBuilder;
 	private String aggrement;
 	
+	
+	@OneToOne(mappedBy="document") //Bidirectional reln inverse side
+	private UserDetail userDetail;
+	
+	
+	
 	public Document() {
 		super();
 		
 	}
 
-	public Document(String userId, String pancard, String aadharCard, String voterId, String salarySlip, String lou,
-			String securityCheck, String nocFromBuilder, String aggrement) {
+
+
+	public Document(String pancard, String aadharCard, String voterId, String salarySlip, String lou,
+			String securityCheck, String nocFromBuilder, String aggrement, UserDetail userDetail) {
 		super();
-		this.userId = userId;
 		this.pancard = pancard;
 		this.aadharCard = aadharCard;
 		this.voterId = voterId;
@@ -29,88 +38,126 @@ public class Document {
 		this.securityCheck = securityCheck;
 		this.nocFromBuilder = nocFromBuilder;
 		this.aggrement = aggrement;
+		this.userDetail = userDetail;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public String getPancard() {
 		return pancard;
 	}
 
+
+
 	public void setPancard(String pancard) {
 		this.pancard = pancard;
 	}
+
+
 
 	public String getAadharCard() {
 		return aadharCard;
 	}
 
+
+
 	public void setAadharCard(String aadharCard) {
 		this.aadharCard = aadharCard;
 	}
+
+
 
 	public String getVoterId() {
 		return voterId;
 	}
 
+
+
 	public void setVoterId(String voterId) {
 		this.voterId = voterId;
 	}
+
+
 
 	public String getSalarySlip() {
 		return salarySlip;
 	}
 
+
+
 	public void setSalarySlip(String salarySlip) {
 		this.salarySlip = salarySlip;
 	}
+
+
 
 	public String getLou() {
 		return lou;
 	}
 
+
+
 	public void setLou(String lou) {
 		this.lou = lou;
 	}
+
+
 
 	public String getSecurityCheck() {
 		return securityCheck;
 	}
 
+
+
 	public void setSecurityCheck(String securityCheck) {
 		this.securityCheck = securityCheck;
 	}
+
+
 
 	public String getNocFromBuilder() {
 		return nocFromBuilder;
 	}
 
+
+
 	public void setNocFromBuilder(String nocFromBuilder) {
 		this.nocFromBuilder = nocFromBuilder;
 	}
+
+
 
 	public String getAggrement() {
 		return aggrement;
 	}
 
+
+
 	public void setAggrement(String aggrement) {
 		this.aggrement = aggrement;
 	}
 
+
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Document [userId=" + userId + ", pancard=" + pancard + ", aadharCard=" + aadharCard + ", voterId="
-				+ voterId + ", salarySlip=" + salarySlip + ", lou=" + lou + ", securityCheck=" + securityCheck
-				+ ", nocFromBuilder=" + nocFromBuilder + ", aggrement=" + aggrement + "]";
+		return "Document [pancard=" + pancard + ", aadharCard=" + aadharCard + ", voterId=" + voterId + ", salarySlip="
+				+ salarySlip + ", lou=" + lou + ", securityCheck=" + securityCheck + ", nocFromBuilder="
+				+ nocFromBuilder + ", aggrement=" + aggrement + ", userDetail=" + userDetail + "]";
 	}
-	
-	
+
 	
 	
 

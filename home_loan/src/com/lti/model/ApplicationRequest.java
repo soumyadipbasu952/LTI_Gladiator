@@ -2,10 +2,20 @@ package com.lti.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 public class ApplicationRequest {
 	
+	
+	@Id
+	@GeneratedValue
 	private String applicationId;
-	private String userId;
+	
 	private double amtRequired;
 	private float tenureYear;
 	private LocalDate reqTimeApplied;
@@ -16,17 +26,23 @@ public class ApplicationRequest {
 	private String status;
 	private String remark;
 	
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="ApplicationId")
+	private EmiTransaction emiTransaction;
+	
+	@OneToOne(mappedBy="applicationRequest") //Bidirectional reln inverse side
+	private UserDetail userDetail;
+	
 	public ApplicationRequest() {
 		super();
 		
 	}
 
-	public ApplicationRequest(String applicationId, String userId, double amtRequired, float tenureYear,
-			LocalDate reqTimeApplied, double amtGrantable, String computerApproval, String customerWillingStatus,
-			String adminApproval, String status, String remark) {
+	public ApplicationRequest(String applicationId, double amtRequired, float tenureYear, LocalDate reqTimeApplied,
+			double amtGrantable, String computerApproval, String customerWillingStatus, String adminApproval,
+			String status, String remark, UserDetail userDetail) {
 		super();
 		this.applicationId = applicationId;
-		this.userId = userId;
 		this.amtRequired = amtRequired;
 		this.tenureYear = tenureYear;
 		this.reqTimeApplied = reqTimeApplied;
@@ -36,6 +52,7 @@ public class ApplicationRequest {
 		this.adminApproval = adminApproval;
 		this.status = status;
 		this.remark = remark;
+		this.userDetail = userDetail;
 	}
 
 	public String getApplicationId() {
@@ -44,14 +61,6 @@ public class ApplicationRequest {
 
 	public void setApplicationId(String applicationId) {
 		this.applicationId = applicationId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public double getAmtRequired() {
@@ -126,16 +135,24 @@ public class ApplicationRequest {
 		this.remark = remark;
 	}
 
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
 	@Override
 	public String toString() {
-		return "ApplicationRequest [applicationId=" + applicationId + ", userId=" + userId + ", amtRequired="
-				+ amtRequired + ", tenureYear=" + tenureYear + ", amtGrantable=" + amtGrantable + ", computerApproval="
-				+ computerApproval + ", customerWillingStatus=" + customerWillingStatus + ", adminApproval="
-				+ adminApproval + ", status=" + status + ", remark=" + remark + "]";
+		return "ApplicationRequest [applicationId=" + applicationId + ", amtRequired=" + amtRequired + ", tenureYear="
+				+ tenureYear + ", reqTimeApplied=" + reqTimeApplied + ", amtGrantable=" + amtGrantable
+				+ ", computerApproval=" + computerApproval + ", customerWillingStatus=" + customerWillingStatus
+				+ ", adminApproval=" + adminApproval + ", status=" + status + ", remark=" + remark + ", userDetail="
+				+ userDetail + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
-	
-	
-	
-	
 
+	
+	
 }

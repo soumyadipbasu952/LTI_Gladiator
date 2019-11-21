@@ -3,15 +3,18 @@ package com.lti.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class PropertyDetail {
 
-	@Id @GeneratedValue
-	private String userId;
+
 	private String propertyType;
 	private String propertyName;
 	private double estimatedAmount;
+	
+	@OneToOne(mappedBy="propertyDetail") //Bidirectional reln inverse side
+	private UserDetail userDetail;
 	
 	public PropertyDetail() 
 	{
@@ -19,20 +22,12 @@ public class PropertyDetail {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PropertyDetail(String userId, String propertyType, String propertyName, double estimatedAmount) {
+	public PropertyDetail(String propertyType, String propertyName, double estimatedAmount, UserDetail userDetail) {
 		super();
-		this.userId = userId;
 		this.propertyType = propertyType;
 		this.propertyName = propertyName;
 		this.estimatedAmount = estimatedAmount;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+		this.userDetail = userDetail;
 	}
 
 	public String getPropertyType() {
@@ -59,12 +54,21 @@ public class PropertyDetail {
 		this.estimatedAmount = estimatedAmount;
 	}
 
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
 	@Override
 	public String toString() {
-		return "PropertyDetail [userId=" + userId + ", propertyType=" + propertyType + ", propertyName=" + propertyName
-				+ ", estimatedAmount=" + estimatedAmount + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "PropertyDetail [propertyType=" + propertyType + ", propertyName=" + propertyName + ", estimatedAmount="
+				+ estimatedAmount + ", userDetail=" + userDetail + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
+
 	
 	
 	

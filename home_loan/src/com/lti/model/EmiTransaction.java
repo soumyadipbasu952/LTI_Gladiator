@@ -2,15 +2,21 @@ package com.lti.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.OneToOne;
+
 public class EmiTransaction {
 
 
-	private String applicationId;
-	private String userId;
 	private LocalDate month;
 	private double balanceAmt;
 	private double emiAmt;
 	private LocalDate paidTimestamp;
+	
+	@OneToOne(mappedBy="emiTransaction") //Bidirectional reln inverse side
+	private UserDetail userDetail;
+	
+	@OneToOne(mappedBy="emiTransaction") //Bidirectional reln inverse side
+	private ApplicationRequest applicationRequest;
 	
 	
 	public EmiTransaction() {
@@ -19,35 +25,15 @@ public class EmiTransaction {
 	}
 
 
-	public EmiTransaction(String applicationId, String userId, LocalDate month, double balanceAmt, double emiAmt,
-			LocalDate paidTimestamp) {
+	public EmiTransaction(LocalDate month, double balanceAmt, double emiAmt, LocalDate paidTimestamp,
+			UserDetail userDetail, ApplicationRequest applicationRequest) {
 		super();
-		this.applicationId = applicationId;
-		this.userId = userId;
 		this.month = month;
 		this.balanceAmt = balanceAmt;
 		this.emiAmt = emiAmt;
 		this.paidTimestamp = paidTimestamp;
-	}
-
-
-	public String getApplicationId() {
-		return applicationId;
-	}
-
-
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
-	}
-
-
-	public String getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+		this.userDetail = userDetail;
+		this.applicationRequest = applicationRequest;
 	}
 
 
@@ -91,13 +77,35 @@ public class EmiTransaction {
 	}
 
 
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
+
+	public ApplicationRequest getApplicationRequest() {
+		return applicationRequest;
+	}
+
+
+	public void setApplicationRequest(ApplicationRequest applicationRequest) {
+		this.applicationRequest = applicationRequest;
+	}
+
+
 	@Override
 	public String toString() {
-		return "EmiTransaction [applicationId=" + applicationId + ", userId=" + userId + ", balanceAmt=" + balanceAmt
-				+ ", emiAmt=" + emiAmt + "]";
+		return "EmiTransaction [month=" + month + ", balanceAmt=" + balanceAmt + ", emiAmt=" + emiAmt
+				+ ", paidTimestamp=" + paidTimestamp + ", userDetail=" + userDetail + ", applicationRequest="
+				+ applicationRequest + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
-	
-	
-	
+
+
+
 	
 }

@@ -1,27 +1,28 @@
-/*package com.lti.model;
+package com.lti.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity 
 public class Salaried {
 
-	@Id @GeneratedValue
+
 	private double netAmtSalary;
 	private double existingEmi;
 	private int retirementAge;
 	private String organizationType;
 	private String employerName;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private UserDetail userId;
+	@OneToOne(mappedBy="salaried")
+	private UserDetail userDetail;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private String typeOfEmployment;
+	@OneToOne(mappedBy="salaried")
+	private IncomeDetail incomeDetail;
 	
     
     public Salaried() {
@@ -31,15 +32,15 @@ public class Salaried {
 
 
 	public Salaried(double netAmtSalary, double existingEmi, int retirementAge, String organizationType,
-			String employerName, String userId, String typeOfEmployment) {
+			String employerName, UserDetail userDetail, IncomeDetail incomeDetail) {
 		super();
 		this.netAmtSalary = netAmtSalary;
 		this.existingEmi = existingEmi;
 		this.retirementAge = retirementAge;
 		this.organizationType = organizationType;
 		this.employerName = employerName;
-		this.userId = userId;
-		this.typeOfEmployment = typeOfEmployment;
+		this.userDetail = userDetail;
+		this.incomeDetail = incomeDetail;
 	}
 
 
@@ -93,23 +94,23 @@ public class Salaried {
 	}
 
 
-	public String getUserId() {
-		return userId;
+	public UserDetail getUserDetail() {
+		return userDetail;
 	}
 
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
 
 
-	public String getTypeOfEmployment() {
-		return typeOfEmployment;
+	public IncomeDetail getIncomeDetail() {
+		return incomeDetail;
 	}
 
 
-	public void setTypeOfEmployment(String typeOfEmployment) {
-		this.typeOfEmployment = typeOfEmployment;
+	public void setIncomeDetail(IncomeDetail incomeDetail) {
+		this.incomeDetail = incomeDetail;
 	}
 
 
@@ -117,10 +118,12 @@ public class Salaried {
 	public String toString() {
 		return "Salaried [netAmtSalary=" + netAmtSalary + ", existingEmi=" + existingEmi + ", retirementAge="
 				+ retirementAge + ", organizationType=" + organizationType + ", employerName=" + employerName
-				+ ", userId=" + userId + ", typeOfEmployment=" + typeOfEmployment + "]";
+				+ ", userDetail=" + userDetail + ", incomeDetail=" + incomeDetail + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-    
-    
-    
 
-}*/
+
+	
+
+	
+}

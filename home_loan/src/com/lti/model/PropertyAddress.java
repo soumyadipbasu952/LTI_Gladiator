@@ -3,13 +3,13 @@ package com.lti.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity 
 public class PropertyAddress 
 {
 	
-	@Id @GeneratedValue
-	private String userId;
+	
 	private String address1;
 	private String address2;
 	private String landMark;
@@ -17,31 +17,25 @@ public class PropertyAddress
 	private String city;
 	private int pin;
 	
+	@OneToOne(mappedBy="propertyAddress") //Bidirectional reln inverse side
+	private UserDetail userDetail;
+	
 	public PropertyAddress() 
 	{
 		super();
 		
 	}
 
-	public PropertyAddress(String userId, String address1, String address2, String landMark, String state, String city,
-			int pin) 
-	{
+	public PropertyAddress(String address1, String address2, String landMark, String state, String city, int pin,
+			UserDetail userDetail) {
 		super();
-		this.userId = userId;
 		this.address1 = address1;
 		this.address2 = address2;
 		this.landMark = landMark;
 		this.state = state;
 		this.city = city;
 		this.pin = pin;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+		this.userDetail = userDetail;
 	}
 
 	public String getAddress1() {
@@ -92,12 +86,22 @@ public class PropertyAddress
 		this.pin = pin;
 	}
 
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
 	@Override
 	public String toString() {
-		return "PropertyAddress [userId=" + userId + ", address1=" + address1 + ", address2=" + address2 + ", landMark="
-				+ landMark + ", state=" + state + ", city=" + city + ", pin=" + pin + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "PropertyAddress [address1=" + address1 + ", address2=" + address2 + ", landMark=" + landMark
+				+ ", state=" + state + ", city=" + city + ", pin=" + pin + ", userDetail=" + userDetail
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
+
 	
 	
 	
