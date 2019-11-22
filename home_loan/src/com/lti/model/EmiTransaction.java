@@ -2,11 +2,15 @@ package com.lti.model;
 
 import java.time.LocalDate;
 
+/*import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 public class EmiTransaction {
 
-
+	@Id @GeneratedValue
+	int id;
+	
 	private LocalDate month;
 	private double balanceAmt;
 	private double emiAmt;
@@ -109,3 +113,4 @@ public class EmiTransaction {
 
 	
 }
+*/

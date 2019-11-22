@@ -1,9 +1,17 @@
 package com.lti.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 public class Document {
 	
+	
+	@Id @GeneratedValue
+	int id;
 	
 	private String pancard;
 	private String aadharCard;
@@ -15,7 +23,8 @@ public class Document {
 	private String aggrement;
 	
 	
-	@OneToOne(mappedBy="document") //Bidirectional reln inverse side
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="userId")
 	private UserDetail userDetail;
 	
 	

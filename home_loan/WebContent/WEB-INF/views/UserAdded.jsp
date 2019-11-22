@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>hello ${user.userId}</h1>
-<h1>hello ${user.firstName}</h1>
-<h1>hello ${user.middleName}</h1>
-<h1>hello ${user.lastName}</h1>
+
+<h1>hello ${user.firstName} ${user.userId}</h1>
+<br><br>
+<a href ="typeOfEmployment.jsp">Select type of Employment</a>
+
 </body>
 </html>

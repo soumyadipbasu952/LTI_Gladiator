@@ -1,110 +1,88 @@
 package com.lti.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
+@Entity
 public class SelfEmployedBusiness {
 
+	@Id @GeneratedValue
+	private int selfEmployedId;
 	
 	private double patAsPerLatestItr;
 	private double depreciationLast3Avg;
 	private double existingEmi;
-
+	private String typeOfEmployment="self-Employed";
 	
-	@OneToOne(mappedBy="selfEmployedBusiness")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="userId")
 	private UserDetail userDetail;
-	
-	
-	
-	@OneToOne(mappedBy="selfEmployedBusiness")
-	private IncomeDetail incomeDetail;
-	
-	
-	
-	public SelfEmployedBusiness() {
+
+	public SelfEmployedBusiness(int selfEmployedId, double patAsPerLatestItr, double depreciationLast3Avg,
+			double existingEmi, String typeOfEmployment, UserDetail userDetail) {
 		super();
-		
-	}
-
-
-
-	public SelfEmployedBusiness(double patAsPerLatestItr, double depreciationLast3Avg, double existingEmi,
-			UserDetail userDetail, IncomeDetail incomeDetail) {
-		super();
+		this.selfEmployedId = selfEmployedId;
 		this.patAsPerLatestItr = patAsPerLatestItr;
 		this.depreciationLast3Avg = depreciationLast3Avg;
 		this.existingEmi = existingEmi;
+		this.typeOfEmployment = typeOfEmployment;
 		this.userDetail = userDetail;
-		this.incomeDetail = incomeDetail;
 	}
 
+	public int getSelfEmployedId() {
+		return selfEmployedId;
+	}
 
+	public void setSelfEmployedId(int selfEmployedId) {
+		this.selfEmployedId = selfEmployedId;
+	}
 
 	public double getPatAsPerLatestItr() {
 		return patAsPerLatestItr;
 	}
 
-
-
 	public void setPatAsPerLatestItr(double patAsPerLatestItr) {
 		this.patAsPerLatestItr = patAsPerLatestItr;
 	}
-
-
 
 	public double getDepreciationLast3Avg() {
 		return depreciationLast3Avg;
 	}
 
-
-
 	public void setDepreciationLast3Avg(double depreciationLast3Avg) {
 		this.depreciationLast3Avg = depreciationLast3Avg;
 	}
-
-
 
 	public double getExistingEmi() {
 		return existingEmi;
 	}
 
-
-
 	public void setExistingEmi(double existingEmi) {
 		this.existingEmi = existingEmi;
 	}
 
+	public String getTypeOfEmployment() {
+		return typeOfEmployment;
+	}
 
+	public void setTypeOfEmployment(String typeOfEmployment) {
+		this.typeOfEmployment = typeOfEmployment;
+	}
 
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
 
-
-
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
 
-
-
-	public IncomeDetail getIncomeDetail() {
-		return incomeDetail;
-	}
-
-
-
-	public void setIncomeDetail(IncomeDetail incomeDetail) {
-		this.incomeDetail = incomeDetail;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "SelfEmployedBusiness [patAsPerLatestItr=" + patAsPerLatestItr + ", depreciationLast3Avg="
-				+ depreciationLast3Avg + ", existingEmi=" + existingEmi + ", userDetail=" + userDetail
-				+ ", incomeDetail=" + incomeDetail + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+	public SelfEmployedBusiness() {
+		super();
 	}
 
 	

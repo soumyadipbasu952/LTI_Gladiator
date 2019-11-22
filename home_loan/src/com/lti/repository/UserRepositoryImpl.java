@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository
 	@Transactional
 	public UserDetail addUser(UserDetail ud)
 	{
-
+		ud=em.merge(ud);
 		em.persist(ud);
 		return ud;
 	}
@@ -65,9 +65,10 @@ public class UserRepositoryImpl implements UserRepository
 
 	@Override
 	public UserDetail findUserById(String userId)
-	{
+	{	
+		UserDetail u=em.find(UserDetail.class, new String (userId));
 		
-		return null;
+		return u;
 	}
 
 

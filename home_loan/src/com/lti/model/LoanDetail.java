@@ -1,4 +1,4 @@
-package com.lti.model;
+/*package com.lti.model;
 
 import java.time.LocalDate;
 
@@ -160,4 +160,4 @@ public class LoanDetail {
 	
 	
 
-}
+}*/

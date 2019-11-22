@@ -38,7 +38,7 @@ public class EnquiryController
 		
 		ModelAndView model = null;
 		if(e1==null)
-		{
+		{	//e1.setEstimatedAmt(estimatedAmt);
 			model= new ModelAndView("Loan_not_granted");
 		}
 		else

@@ -33,11 +33,13 @@ Enter Aadhar Number:<input type="number" name="aadharNumber" >
 <br><br>
 Enter PAN Number:<input type="number" name="panNumber" >
 <br><br>
+
 <input type="submit" value = "Submit">
 </form>
 <a href="delete.jsp">Delete User</a><br><br>
 <a href="UpdateUser.jsp">Update User</a><br><br>
 <a href="Enquiry.jsp">Enquiry</a>
+
 
 </center>
 </body>

@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDetail findUserById(String userId)
 	{
-		repository.findUserById(userId);
-		return null;
+		return repository.findUserById(userId);
+		
 	}
 
 	@Override

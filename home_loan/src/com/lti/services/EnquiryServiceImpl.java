@@ -19,26 +19,29 @@ public class EnquiryServiceImpl implements EnquiryService
 	@Transactional
 	public Enquiry addEnquiry(Enquiry e) 
 	{
-		boolean flag=false;
+		//boolean flag=false;
+		Enquiry e1=new Enquiry();
 		double estimatedAmt=12*e.getTenures()*(e.getSalary()-(e.getSalary()*0.1)-e.getCostOfLiving()-e.getCurrentEmi());
-		if(estimatedAmt==e.getRequiredAmt())
+		if(estimatedAmt>=e.getRequiredAmt())
 		{
 			 if(e.getTenures()<=e.getRetirementAge())
 			 {
-				// System.out.println("Loan Granted");
-				 flag=true;
-				 return enquiryRepository.addEnquiry(e);
+				 System.out.println("Loan Granted");
+				 e1=e;
+				 return enquiryRepository.addEnquiry(e1);
 			 }
 		}
 		 else
 		 {
-			 //System.out.println("Loan Rejected");
+			 System.out.println("Loan Rejected");
 			 return null;
 		 }
-		e.setEstimatedAmt(estimatedAmt);
+		e1.setEstimatedAmt(estimatedAmt);
 		return e;
 		
 	}
+	
+//	public boolean Calculate 
 	
 }
 
