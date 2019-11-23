@@ -9,11 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Address {
+public class Address 
+{
 	
 
 	@Id @GeneratedValue
 	int id;
+	
 	private String address1;
 	private String address2;
 	private String landMark;

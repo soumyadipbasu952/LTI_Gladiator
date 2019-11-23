@@ -28,8 +28,10 @@ User_Id:<input type="text" name="userId" >
 <input type="submit" value = "Submit">
 </form>
 <!--  <a href="delete.jsp">Delete User</a><br><br>
-<a href="UpdateUser.jsp">Update User</a><br><br>-->
-<a href="Enquiry.jsp">Enquiry</a>
+<a href="UpdateUser.jsp">Update User</a><br><br>
+<a href="Enquiry.jsp">Enquiry</a>-->
+
+<a href="insertAddress.jsp">Enter Address</a>
 
 </center>
 </body>

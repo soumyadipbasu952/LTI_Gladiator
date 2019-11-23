@@ -7,51 +7,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lti.model.PropertyAddress;
 import com.lti.model.Salaried;
 import com.lti.model.UserDetail;
-import com.lti.services.SalariedService;
+import com.lti.services.PropertyAddressService;
 import com.lti.services.UserService;
 
 @Controller
-public class SalariedController
+public class PropertyAddressController 
 {
-
 	@Autowired
-	SalariedService salariedService;
+	PropertyAddressService propertyAddressService;
 	@Autowired
 	UserService userService;
 	
-	
-	@RequestMapping(value="/addSalaried", method=RequestMethod.POST)
-	public ModelAndView addSalaried(@RequestParam double netAmtSalary,@RequestParam double existingEmi,@RequestParam int retirementAge,@RequestParam String organizationType,@RequestParam String employerName,@RequestParam String typeOfEmployment, @RequestParam String userId)
+	@RequestMapping(value="/addPropertyAddress", method=RequestMethod.POST)
+	public ModelAndView addPropertyAddress(@RequestParam String address1,@RequestParam String address2,@RequestParam String landMark,@RequestParam String city,@RequestParam String state, @RequestParam int pin,@RequestParam String userId)
 	{
-		 Salaried s=new Salaried();
+		 PropertyAddress pa=new PropertyAddress();
 		 
 		
 		 
-		 s.setNetAmtSalary(netAmtSalary);
-		 s.setExistingEmi(existingEmi);
-		 s.setRetirementAge(retirementAge);
-		 s.setOrganizationType(organizationType);
-		 s.setEmployerName(employerName);
-		 s.setTypeOfEmployment(typeOfEmployment);
+		pa.setAddress1(address1);
+		pa.setAddress2(address2);
+		pa.setLandMark(landMark);
+		pa.setCity(city);
+		pa.setState(state);
+		pa.setPin(pin);
 	 
 		 UserDetail ud = new UserDetail();
 		 ud=userService.findUserById(userId);
-		s.setUserDetail(ud);
+		pa.setUserDetail(ud);
 		
 		 
-		 Salaried s1=salariedService.addSalaried(s);
+		 PropertyAddress pa1=propertyAddressService.addPropertyAddress(pa);
 		
 		ModelAndView model = null;
-		if(s1==null)
+		if(pa1==null)
 		{
 			model= new ModelAndView("Loan_not_granted");
 		}
 		else
 		{
 			model= new ModelAndView("Loan_granted");
-			model.addObject("user",s1);
+			model.addObject("user",pa1);
 		}
 		return model;
 		

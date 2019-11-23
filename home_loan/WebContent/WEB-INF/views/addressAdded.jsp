@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1> Loan Granted</h1>
-
-<a href ="insertAddress.jsp">Click Here to Continue</a>
+<h1>${ud.userId}</h1>
+<h2>Your Address has been Added</h2>
+<a href="property_address.jsp">Enter Property Address</a>
 </body>
 </html>

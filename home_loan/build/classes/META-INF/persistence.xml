@@ -6,7 +6,7 @@
     <persistence-unit name="myPu" transaction-type="RESOURCE_LOCAL">
      <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class><!-- Entity Manager Class Name --></class>
-        <properties>
+        <properties> 
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@192.168.100.148:1521:xe" />
             <property name="javax.persistence.jdbc.user" value="system" />
