@@ -21,7 +21,7 @@ Retirement_Age:<input type="text" name="retirementAge" >
 <br><br>
 Type_Of_Employemnt:<input type="text" name="typeOfEmployment" value="salaried" >
 <br><br>
-<input type="text" name="userId" hidden value="<%=session.getAttribute("userId") %> > <!-- "> -->
+<input type="text" name="userId">  <!-- value="<%=session.getAttribute("userId") %> >  -->
 <br><br>
 
 
