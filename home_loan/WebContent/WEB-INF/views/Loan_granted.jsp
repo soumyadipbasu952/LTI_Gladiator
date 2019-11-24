@@ -9,6 +9,6 @@
 <body>
 <h1> Loan Granted</h1>
 
-<a href ="insertAddress.jsp">Click Here to Continue</a>
+<a href ="insertBankDetails.jsp">Click Here to Continue</a>
 </body>
 </html>

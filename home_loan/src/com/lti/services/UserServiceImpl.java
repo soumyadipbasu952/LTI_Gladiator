@@ -43,6 +43,8 @@ public class UserServiceImpl implements UserService {
 		return repository.findUserById(userId);
 		
 	}
+	
+	
 
 	@Override
 	public List<UserDetail> findAllUsers() 

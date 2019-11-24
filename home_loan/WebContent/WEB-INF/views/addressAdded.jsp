@@ -9,6 +9,7 @@
 <body>
 <h1>${ud.userId}</h1>
 <h2>Your Address has been Added</h2>
-<a href="property_address.jsp">Enter Property Address</a>
+<a href="propertyDetails.jsp">Add Property Details</a>
+
 </body>
 </html>

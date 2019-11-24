@@ -3,15 +3,21 @@ package com.lti.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity 
+@Table(name="propertyAddress")
 public class PropertyAddress 
 {
-	@Id @GeneratedValue
-	int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PropertyAddId")
+	@SequenceGenerator(sequenceName = "PropertyAddId", name = "PropertyAddId", allocationSize = 1)
+	int PropertyAddId;
 	
 	private String address1;
 	private String address2;
@@ -32,10 +38,10 @@ public class PropertyAddress
 	}
 
 
-	public PropertyAddress(int id, String address1, String address2, String landMark, String state, String city,
-			int pin, UserDetail userDetail) {
+	public PropertyAddress(int propertyAddId, String address1, String address2, String landMark, String state,
+			String city, int pin, UserDetail userDetail) {
 		super();
-		this.id = id;
+		PropertyAddId = propertyAddId;
 		this.address1 = address1;
 		this.address2 = address2;
 		this.landMark = landMark;
@@ -46,13 +52,13 @@ public class PropertyAddress
 	}
 
 
-	public int getId() {
-		return id;
+	public int getPropertyAddId() {
+		return PropertyAddId;
 	}
 
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPropertyAddId(int propertyAddId) {
+		PropertyAddId = propertyAddId;
 	}
 
 
@@ -124,6 +130,16 @@ public class PropertyAddress
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
+
+
+	@Override
+	public String toString() {
+		return "PropertyAddress [PropertyAddId=" + PropertyAddId + ", address1=" + address1 + ", address2=" + address2
+				+ ", landMark=" + landMark + ", state=" + state + ", city=" + city + ", pin=" + pin + ", userDetail="
+				+ userDetail + "]";
+	}
+
+
 
 	
 }

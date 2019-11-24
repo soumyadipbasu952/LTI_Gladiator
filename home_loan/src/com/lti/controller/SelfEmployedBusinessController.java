@@ -43,11 +43,11 @@ public class SelfEmployedBusinessController
 		ModelAndView model = null;
 		if(seb1==null)
 		{
-			model= new ModelAndView("Loan_not_granted");
+			model= new ModelAndView("IncomeNotAdded");
 		}
 		else
 		{
-			model= new ModelAndView("Loan_granted");
+			model= new ModelAndView("IncomeAdded");
 			model.addObject("user",seb1);
 		}
 		return model;

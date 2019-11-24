@@ -3,13 +3,14 @@ package com.lti.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class UserDetail {
+@Table(name="userDetails")
+public class UserDetail
+{
 	
 	@Id 
-
 	private String userId;
 
 	private String firstName;
@@ -21,7 +22,7 @@ public class UserDetail {
 	private String dob;
 	private String gender;
 	private String residentType;
-	private int aadharNumber;
+	private long aadharNumber;
 	private String panNumber; 
 	
 
@@ -32,7 +33,7 @@ public class UserDetail {
 	}
 	
 	public UserDetail(String userId, String firstName, String middleName, String lastName, String emailId, String password,
-		String phoneno, String dob, String gender, String residentType, int aadharNumber, String panNumber,
+		String phoneno, String dob, String gender, String residentType, long aadharNumber, String panNumber,
 		SelfEmployedBusiness selfEmployedBusiness, Salaried salaried) {
 	super();
 	this.userId = userId;
@@ -132,11 +133,11 @@ public class UserDetail {
 		this.residentType = residentType;
 	}
 
-	public int getAadharNumber() {
+	public long getAadharNumber() {
 		return aadharNumber;
 	}
 
-	public void setAadharNumber(int aadharNumber) {
+	public void setAadharNumber(long aadharNumber) {
 		this.aadharNumber = aadharNumber;
 	}
 

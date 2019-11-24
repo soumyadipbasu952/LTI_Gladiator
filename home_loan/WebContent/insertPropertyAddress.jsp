@@ -9,13 +9,13 @@
 <body>
 <center>
 <form method=post action="/home_loan/addPropertyAddress">
-User_ID:<input type="text" name="userId" hidden>
+User_ID:<input type="text" name="userId">
 <br><br>
 Address_Line_1:<input type="text" name="address1" >
 <br><br>
 Address_Line_2:<input type="text" name="address2" >
 <br><br>
-Landmark:<input type="text" name="landmark" >
+Landmark:<input type="text" name="landMark" >
 <br><br>
 City:<input type="text" name="city" >
 <br><br>

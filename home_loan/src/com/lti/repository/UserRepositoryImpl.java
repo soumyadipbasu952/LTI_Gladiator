@@ -64,6 +64,7 @@ public class UserRepositoryImpl implements UserRepository
 
 
 	@Override
+	@Transactional
 	public UserDetail findUserById(String userId)
 	{	
 		UserDetail u=em.find(UserDetail.class, new String (userId));

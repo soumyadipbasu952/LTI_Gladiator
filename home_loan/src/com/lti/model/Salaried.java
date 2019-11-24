@@ -1,25 +1,29 @@
 package com.lti.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-@Entity 
+@Entity @Table(name="salariedDetails")
 public class Salaried {
 
-	@Id @GeneratedValue
-	int salaried_id;
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "salariedId")
+	@SequenceGenerator(sequenceName = "salariedId", name = "salariedId", allocationSize = 1)
+	int salariedId;
 	private double netAmtSalary;
 	private double existingEmi;
 	private int retirementAge;
 	private String organizationType;
 	private String employerName;
+	//@Column(name="type_of_employment")
 	private String typeOfEmployment="salaried";
 	
 //	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER,)
@@ -35,10 +39,11 @@ public class Salaried {
 	{
 	}
 
-	public Salaried(int salaried_id, double netAmtSalary, double existingEmi, int retirementAge,
-			String organizationType, String employerName, String typeOfEmployment, UserDetail userDetail) {
+
+	public Salaried(int salariedId, double netAmtSalary, double existingEmi, int retirementAge, String organizationType,
+			String employerName, String typeOfEmployment, UserDetail userDetail) {
 		super();
-		this.salaried_id = salaried_id;
+		this.salariedId = salariedId;
 		this.netAmtSalary = netAmtSalary;
 		this.existingEmi = existingEmi;
 		this.retirementAge = retirementAge;
@@ -48,83 +53,86 @@ public class Salaried {
 		this.userDetail = userDetail;
 	}
 
-	public int getSalaried_id() {
-		return salaried_id;
+
+	public int getSalariedId() {
+		return salariedId;
 	}
 
-	public void setSalaried_id(int salaried_id) {
-		this.salaried_id = salaried_id;
+
+	public void setSalariedId(int salariedId) {
+		this.salariedId = salariedId;
 	}
+
 
 	public double getNetAmtSalary() {
 		return netAmtSalary;
 	}
 
+
 	public void setNetAmtSalary(double netAmtSalary) {
 		this.netAmtSalary = netAmtSalary;
 	}
+
 
 	public double getExistingEmi() {
 		return existingEmi;
 	}
 
+
 	public void setExistingEmi(double existingEmi) {
 		this.existingEmi = existingEmi;
 	}
+
 
 	public int getRetirementAge() {
 		return retirementAge;
 	}
 
+
 	public void setRetirementAge(int retirementAge) {
 		this.retirementAge = retirementAge;
 	}
+
 
 	public String getOrganizationType() {
 		return organizationType;
 	}
 
+
 	public void setOrganizationType(String organizationType) {
 		this.organizationType = organizationType;
 	}
+
 
 	public String getEmployerName() {
 		return employerName;
 	}
 
+
 	public void setEmployerName(String employerName) {
 		this.employerName = employerName;
 	}
+
 
 	public String getTypeOfEmployment() {
 		return typeOfEmployment;
 	}
 
+
 	public void setTypeOfEmployment(String typeOfEmployment) {
 		this.typeOfEmployment = typeOfEmployment;
 	}
+
 
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
 
+
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
 
-	@Override
-	public String toString() {
-		return "Salaried [salaried_id=" + salaried_id + ", netAmtSalary=" + netAmtSalary + ", existingEmi="
-				+ existingEmi + ", retirementAge=" + retirementAge + ", organizationType=" + organizationType
-				+ ", employerName=" + employerName + ", typeOfEmployment=" + typeOfEmployment + ", userDetail="
-				+ userDetail + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
-
-	
-	
-	
-	
 	
 }
     

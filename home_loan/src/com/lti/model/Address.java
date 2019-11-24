@@ -4,17 +4,23 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="addressDetail")
 public class Address 
 {
 	
 
-	@Id @GeneratedValue
-	int id;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AddressId")
+	@SequenceGenerator(sequenceName = "AddressId", name = "AddressId", allocationSize = 1)
+	int AddressId;
 	
 	private String address1;
 	private String address2;
@@ -33,10 +39,10 @@ public class Address
 		
 	}
 
-	public Address(int id, String address1, String address2, String landMark, String state, String city, int pin,
+	public Address(int addressId, String address1, String address2, String landMark, String state, String city, int pin,
 			UserDetail userDetail) {
 		super();
-		this.id = id;
+		AddressId = addressId;
 		this.address1 = address1;
 		this.address2 = address2;
 		this.landMark = landMark;
@@ -46,12 +52,12 @@ public class Address
 		this.userDetail = userDetail;
 	}
 
-	public int getId() {
-		return id;
+	public int getAddressId() {
+		return AddressId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAddressId(int addressId) {
+		AddressId = addressId;
 	}
 
 	public String getAddress1() {
@@ -110,4 +116,12 @@ public class Address
 		this.userDetail = userDetail;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [AddressId=" + AddressId + ", address1=" + address1 + ", address2=" + address2 + ", landMark="
+				+ landMark + ", state=" + state + ", city=" + city + ", pin=" + pin + ", userDetail=" + userDetail
+				+ "]";
+	}
+
+	
 }

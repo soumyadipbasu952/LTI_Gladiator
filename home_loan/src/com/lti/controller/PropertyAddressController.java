@@ -26,8 +26,6 @@ public class PropertyAddressController
 	{
 		 PropertyAddress pa=new PropertyAddress();
 		 
-		
-		 
 		pa.setAddress1(address1);
 		pa.setAddress2(address2);
 		pa.setLandMark(landMark);
@@ -45,11 +43,11 @@ public class PropertyAddressController
 		ModelAndView model = null;
 		if(pa1==null)
 		{
-			model= new ModelAndView("Loan_not_granted");
+			model= new ModelAndView("propertyAddressNotAdded");
 		}
 		else
 		{
-			model= new ModelAndView("Loan_granted");
+			model= new ModelAndView("propertyAddressAdded");
 			model.addObject("user",pa1);
 		}
 		return model;
