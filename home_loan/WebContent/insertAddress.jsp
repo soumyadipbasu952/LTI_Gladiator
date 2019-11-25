@@ -9,7 +9,7 @@
 <body>
 <center>
 <form method=post action="/home_loan/insertAddress">
-User_ID:<input type="text" name="userId">
+<input type="text" name="userId" value="<%=session.getAttribute("userId") %>" hidden>
 <br><br>
 Address_Line_1:<input type="text" name="address1" >
 <br><br>

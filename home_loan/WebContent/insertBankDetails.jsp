@@ -9,7 +9,7 @@
 <body>
 <center>
 <form method=post action="/home_loan/addBankDetail">
-UserID:<input type="text" name="userId" >
+<input type="text" name="userId" value="<%=session.getAttribute("userId") %>" hidden>
 <br><br>
 Name_of_Bank:<input type="text" name="bankName" >
 <br><br>

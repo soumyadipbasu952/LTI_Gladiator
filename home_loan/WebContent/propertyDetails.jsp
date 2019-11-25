@@ -9,7 +9,7 @@
 <body>
 <center>
 <form method=post action="/home_loan/addPropertyDetails">
-Enter UserId:<input type="text" name="userId" >
+<input type="text" name="userId" value="<%=session.getAttribute("userId") %> " hidden>
 <br><br>
 Enter Property Type:
 <select name="propertyType">

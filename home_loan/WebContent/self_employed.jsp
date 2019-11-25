@@ -17,7 +17,7 @@ Existing EMI:<input type="text" name="existingEmi" >
 <br><br>
 Type_Of_Employemnt:<input type="text" name="typeOfEmployment" value="self_employed/Business" >
 <br><br>
-User_Id:<input type="text" name="userId" > 
+<input type="text" name="userId" value="<%=session.getAttribute("userId") %>" hidden > 
 <br><br>
 
 <input type="submit" value = "Submit">
