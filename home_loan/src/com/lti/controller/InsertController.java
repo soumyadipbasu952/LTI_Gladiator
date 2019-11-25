@@ -108,21 +108,34 @@ public class InsertController
 	}
 	
 	@RequestMapping(value="/addSalaried", method=RequestMethod.POST)
-	public ModelAndView addSalaried(@RequestParam double netAmtSalary,@RequestParam double existingEmi,@RequestParam int retirementAge,@RequestParam String organizationType,@RequestParam String employerName,@RequestParam String typeOfEmployment, @RequestParam String userId)
-	{
+	public ModelAndView addSalaried(@RequestParam double netAmtSalary,
+			@RequestParam double existingEmi,
+			@RequestParam int retirementAge,
+			@RequestParam String organizationType,
+			@RequestParam String employerName,
+			@RequestParam double requiredAmt,
+			@RequestParam String typeOfEmployment, 
+			@RequestParam int age,
+			@RequestParam double costOfLiving,
+			@RequestParam int tenure,
+			@RequestParam String userId)
+		{
 		 Salaried s=new Salaried();
 		 UserDetail ud = new UserDetail();
-//		 HttpSession session=request.getSession();
-//		request.getAttribute("user", ud.getUserId());	
 		 ud=service.findUserById(userId);
 		 
-		// String userId;
+		
 		 s.setNetAmtSalary(netAmtSalary);
 		 s.setExistingEmi(existingEmi);
 		 s.setRetirementAge(retirementAge);
 		 s.setOrganizationType(organizationType);
 		 s.setEmployerName(employerName);
 		 s.setTypeOfEmployment(typeOfEmployment);
+		 s.setAge(age);
+		 s.setRequiredAmt(requiredAmt);
+		 s.setCostOfLiving(costOfLiving);
+		 s.setTenure(tenure);
+		
 		
 		
 		System.out.println(userId);
@@ -131,13 +144,13 @@ public class InsertController
 		 Salaried s1=salariedService.addSalaried(s);
 		
 		ModelAndView model = null;
-		if(s1==null)
+		if(s1.isStatus()==false)
 		{
-			model= new ModelAndView("IncomeNotAdded");
+			model= new ModelAndView("loanNotGranted");
 		}
 		else
 		{
-			model= new ModelAndView("IncomeAdded");
+			model= new ModelAndView("loanGranted");
 			model.addObject("user",s1);
 		}
 		return model;
@@ -145,7 +158,14 @@ public class InsertController
 	}
 	
 	@RequestMapping(value="/addBusiness", method=RequestMethod.POST)
-	public ModelAndView addBusiness(@RequestParam double patAsPerLatestItr,@RequestParam double depreciationLast3Avg, @RequestParam double existingEmi, @RequestParam String typeOfEmployment, @RequestParam String userId)
+	public ModelAndView addBusiness(@RequestParam double patAsPerLatestItr,
+			@RequestParam double depreciationLast3Avg,
+			@RequestParam double existingEmi,
+			@RequestParam String typeOfEmployment,
+			@RequestParam double requiredAmt,
+			@RequestParam int tenure,
+			@RequestParam double costOfLiving,
+			@RequestParam String userId)
 	{
 		UserDetail ud=new UserDetail();
 		SelfEmployedBusiness seb =new SelfEmployedBusiness();
@@ -153,13 +173,16 @@ public class InsertController
 		seb.setDepreciationLast3Avg(depreciationLast3Avg);
 		seb.setExistingEmi(existingEmi);
 		seb.setTypeOfEmployment(typeOfEmployment);
+		seb.setCostOfLiving(costOfLiving);
+		seb.setRequiredAmt(requiredAmt);
+		seb.setTenure(tenure);
 		
 		ud=service.findUserById(userId);
 		seb.setUserDetail(ud);
 		SelfEmployedBusiness seb1 = selfEmployedBusinessService.addBusiness(seb);
 		
 		ModelAndView model = null;
-		if(seb1==null)
+		if(seb1.isStatus()==false)
 		{
 			model= new ModelAndView("IncomeNotAdded");
 		}

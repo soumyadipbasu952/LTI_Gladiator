@@ -1,58 +1,35 @@
-/*package com.lti.model;
-
-import java.time.LocalDate;
+package com.lti.model;
 
 import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+@Entity
 public class ApplicationRequest {
 	
 	
 	@Id
-	@GeneratedValue
-	private String applicationId;
+	private String applicationId;//Generated here
 	
-	private double amtRequired;
-	private float tenureYear;
-	private LocalDate reqTimeApplied;
-	private double amtGrantable;
-	private String computerApproval;
-	private String customerWillingStatus;
-	private String adminApproval;
-	private String status;
-	private String remark;
+	private double amtRequired;//from Salaried/self-employed
+	private float tenureYear;//from Salaried/self-employed
+	private double amtGrantable;//from Salaried/self-employed
+	private String computerApproval;//from Salaried/self-employed
+	private String customerWillingStatus;//from jsp page
+	private String adminApproval;//generated here
+	private String status;//generated here: approved, rejected,pending
+
 	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="ApplicationId")
-	private EmiTransaction emiTransaction;
-	
-	@OneToOne(mappedBy="applicationRequest") //Bidirectional reln inverse side
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="userId")
 	private UserDetail userDetail;
 	
-	public ApplicationRequest() {
+	public ApplicationRequest() 
+	{
 		super();
 		
-	}
-
-	public ApplicationRequest(String applicationId, double amtRequired, float tenureYear, LocalDate reqTimeApplied,
-			double amtGrantable, String computerApproval, String customerWillingStatus, String adminApproval,
-			String status, String remark, UserDetail userDetail) {
-		super();
-		this.applicationId = applicationId;
-		this.amtRequired = amtRequired;
-		this.tenureYear = tenureYear;
-		this.reqTimeApplied = reqTimeApplied;
-		this.amtGrantable = amtGrantable;
-		this.computerApproval = computerApproval;
-		this.customerWillingStatus = customerWillingStatus;
-		this.adminApproval = adminApproval;
-		this.status = status;
-		this.remark = remark;
-		this.userDetail = userDetail;
 	}
 
 	public String getApplicationId() {
@@ -77,14 +54,6 @@ public class ApplicationRequest {
 
 	public void setTenureYear(float tenureYear) {
 		this.tenureYear = tenureYear;
-	}
-
-	public LocalDate getReqTimeApplied() {
-		return reqTimeApplied;
-	}
-
-	public void setReqTimeApplied(LocalDate reqTimeApplied) {
-		this.reqTimeApplied = reqTimeApplied;
 	}
 
 	public double getAmtGrantable() {
@@ -127,14 +96,7 @@ public class ApplicationRequest {
 		this.status = status;
 	}
 
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
+	
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
@@ -143,17 +105,23 @@ public class ApplicationRequest {
 		this.userDetail = userDetail;
 	}
 
-	@Override
-	public String toString() {
-		return "ApplicationRequest [applicationId=" + applicationId + ", amtRequired=" + amtRequired + ", tenureYear="
-				+ tenureYear + ", reqTimeApplied=" + reqTimeApplied + ", amtGrantable=" + amtGrantable
-				+ ", computerApproval=" + computerApproval + ", customerWillingStatus=" + customerWillingStatus
-				+ ", adminApproval=" + adminApproval + ", status=" + status + ", remark=" + remark + ", userDetail="
-				+ userDetail + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+	public ApplicationRequest(String applicationId, double amtRequired, float tenureYear,
+			double amtGrantable, String computerApproval, String customerWillingStatus, String adminApproval,
+			String status,  UserDetail userDetail) {
+		super();
+		this.applicationId = applicationId;
+		this.amtRequired = amtRequired;
+		this.tenureYear = tenureYear;
+		this.amtGrantable = amtGrantable;
+		this.computerApproval = computerApproval;
+		this.customerWillingStatus = customerWillingStatus;
+		this.adminApproval = adminApproval;
+		this.status = status;
+	
+		this.userDetail = userDetail;
 	}
+	
+	
 
 	
-	
 }
-*/

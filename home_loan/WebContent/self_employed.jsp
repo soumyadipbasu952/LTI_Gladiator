@@ -13,9 +13,15 @@ Pat_As_Per_Latest_ITR:<input type="text" name="patAsPerLatestItr" >
 <br><br>
 Deprication_In_Last_Three_Years:<input type="text" name="depreciationLast3Avg" >
 <br><br>
+Required_Amount:<input type="text" name="requiredAmt" >
+<br><br>
 Existing EMI:<input type="text" name="existingEmi" >
 <br><br>
 Type_Of_Employemnt:<input type="text" name="typeOfEmployment" value="self_employed/Business" >
+<br><br>
+Cost_Of_Living _Per_Month:<input type="text" name="costOfLiving" >
+<br><br>
+Tenure(In years):<input type="text" name="tenure" >
 <br><br>
 <input type="text" name="userId" value="<%=session.getAttribute("userId") %>" hidden > 
 <br><br>
