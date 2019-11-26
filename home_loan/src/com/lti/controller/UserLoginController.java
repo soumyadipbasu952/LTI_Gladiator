@@ -56,7 +56,18 @@ public class UserLoginController {
 
 			
 		}
-
+	
+	
+	@RequestMapping(path="logout" , method= RequestMethod.GET)
+	public String userLogout(HttpServletResponse response, HttpServletRequest request){
+	  session = request.getSession(false);
+		if(session != null)
+		{
+			session.invalidate();
+		}
+		return "userLoggedOut";
+	}
+ 
 	}
 	
 	

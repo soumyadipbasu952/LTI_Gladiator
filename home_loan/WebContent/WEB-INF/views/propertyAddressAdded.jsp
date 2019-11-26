@@ -9,5 +9,6 @@
 <body>
 <input type="text" value="<%=session.getAttribute("userId") %>" hidden>
 <h1>Property Address Added</h1>
+<a href="uploadFiles.jsp">Upload Documents</a>
 </body>
 </html>

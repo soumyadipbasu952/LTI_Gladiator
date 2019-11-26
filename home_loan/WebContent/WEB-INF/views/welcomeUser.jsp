@@ -11,6 +11,9 @@
 <c:choose>
 <c:when test="${ sessionScope.userId != null }">
 
+	<a href="logout" align="left"> <input type="button"
+								value="LOGOUT"></a>
+
 <h1>Welcome</h1>
 </c:when>
 <c:otherwise>
