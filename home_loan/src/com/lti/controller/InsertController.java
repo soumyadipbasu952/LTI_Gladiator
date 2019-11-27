@@ -118,7 +118,7 @@ public class InsertController
 			@RequestParam int age,
 			@RequestParam double costOfLiving,
 			@RequestParam int tenure,
-			@RequestParam String userId)
+			@RequestParam String userId, HttpSession session)
 		{
 		 Salaried s=new Salaried();
 		 UserDetail ud = new UserDetail();
@@ -142,11 +142,23 @@ public class InsertController
 		s.setUserDetail(ud);	
 		 
 		 Salaried s1=salariedService.addSalaried(s);
-		
+//		session.setAttribute("requiredAmt", requiredAmt);
+//		double estimatedAmt=s1.getEstimatedAmt();
+//		session.setAttribute("estimatedAmt", estimatedAmt);
+//		boolean status=s1.isStatus();
+//		session.setAttribute("stauts", status);
+
+
 		ModelAndView model = null;
 		if(s1.isStatus()==false)
 		{
 			model= new ModelAndView("loanNotGranted");
+			session.setAttribute("requiredAmt", requiredAmt);
+			double estimatedAmt=s1.getEstimatedAmt();
+			session.setAttribute("estimatedAmt", estimatedAmt);
+			boolean status=s1.isStatus();
+			session.setAttribute("stauts", status);
+			model.addObject("user1",s);
 		}
 		else
 		{

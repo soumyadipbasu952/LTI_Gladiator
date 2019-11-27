@@ -1,13 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
- <meta name="viewport" content="width=device-width, initial-scale=1" charset="ISO-8859-1">
-  <title>Insert Bank Details</title>
-  <style>
-  body {
+body {
     font-family: Arial, Helvetica, sans-serif;
     background-color:aliceblue;
   }
@@ -209,66 +200,3 @@
     }
   }
   
-  </style>
-</head>
-<body>
-   <div class="container modal modal-content animate imgcontainer">
-<form method=post action="/home_loan/addPropertyDetails">
-
-
-<br>
-<label for="propertyType"><b>PropertyType</b></label>
-<select name="propertyType">
-    <option value="purchase">Purchase or construct on identified property</option>
-    <option value="repair">Repair/Renovation of own house/flat</option>
-    <option value="unprop">Unidentified Property</option>
-  </select>
-<br><br>
-<label for="propertyName"><b>Property Name</b></label>
-<input type="text" placeholder="Property Name"name="propertyName" >
-
-
-<label for="estimatedAmount"><b>Estimated Amount</b></label>
-<input type="number" placeholder="" name="estimatedAmount" >
-
-
-
-
-
-<input type="text" name="userId" value="<%=session.getAttribute("userId") %>" hidden > 
-<br><br>
-
-
-
-
-        <button type="submit" class="right" >Next</button>
-
-          
-           
-        </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
-        
-        </div>
-</form>
-</div>
-
-
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,7 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<%=session.getAttribute("userId")%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -10,7 +9,10 @@
 <body>
 <c:choose>
 <c:when test="${ sessionScope.userId != null }">
-
+<form action="/home_loan/addRequest" method="post">
+<input type="text" name="userId" value="<%=session.getAttribute("userId") %>" hidden> <br><br>
+ <input type="submit" value="continue">
+</form>
 	<a href="logout" align="left"> <input type="button"
 								value="LOGOUT"></a>
 

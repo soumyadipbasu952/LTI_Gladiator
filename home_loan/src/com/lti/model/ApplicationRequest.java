@@ -2,23 +2,30 @@ package com.lti.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="applicationRequest")
 public class ApplicationRequest {
 	
 	
 	@Id
-	private String applicationId;//Generated here
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "applicationId")
+	@SequenceGenerator(sequenceName = "applicationId", name = "applicationId",initialValue = 1, allocationSize = 1)
+	private int applicationId;//Generated here
 	
 	private double amtRequired;//from Salaried/self-employed
 	private float tenureYear;//from Salaried/self-employed
 	private double amtGrantable;//from Salaried/self-employed
 	private String computerApproval;//from Salaried/self-employed
-	private String customerWillingStatus;//from jsp page
-	private String adminApproval;//generated here
+	//private String customerWillingStatus;//from jsp page
+	private String adminApproval="Pending";//generated here
 	private String status;//generated here: approved, rejected,pending
 
 	
@@ -32,11 +39,26 @@ public class ApplicationRequest {
 		
 	}
 
-	public String getApplicationId() {
+	public ApplicationRequest(int applicationId, double amtRequired, float tenureYear, double amtGrantable,
+			String computerApproval, /*String customerWillingStatus,*/ String adminApproval, String status,
+			UserDetail userDetail) {
+		super();
+		this.applicationId = applicationId;
+		this.amtRequired = amtRequired;
+		this.tenureYear = tenureYear;
+		this.amtGrantable = amtGrantable;
+		this.computerApproval = computerApproval;
+		//this.customerWillingStatus = customerWillingStatus;
+		this.adminApproval = adminApproval;
+		this.status = status;
+		this.userDetail = userDetail;
+	}
+
+	public int getApplicationId() {
 		return applicationId;
 	}
 
-	public void setApplicationId(String applicationId) {
+	public void setApplicationId(int applicationId) {
 		this.applicationId = applicationId;
 	}
 
@@ -72,13 +94,13 @@ public class ApplicationRequest {
 		this.computerApproval = computerApproval;
 	}
 
-	public String getCustomerWillingStatus() {
-		return customerWillingStatus;
-	}
-
-	public void setCustomerWillingStatus(String customerWillingStatus) {
-		this.customerWillingStatus = customerWillingStatus;
-	}
+//	public String getCustomerWillingStatus() {
+//		return customerWillingStatus;
+//	}
+//
+//	public void setCustomerWillingStatus(String customerWillingStatus) {
+//		this.customerWillingStatus = customerWillingStatus;
+//	}
 
 	public String getAdminApproval() {
 		return adminApproval;
@@ -96,7 +118,6 @@ public class ApplicationRequest {
 		this.status = status;
 	}
 
-	
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
@@ -104,24 +125,6 @@ public class ApplicationRequest {
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
-
-	public ApplicationRequest(String applicationId, double amtRequired, float tenureYear,
-			double amtGrantable, String computerApproval, String customerWillingStatus, String adminApproval,
-			String status,  UserDetail userDetail) {
-		super();
-		this.applicationId = applicationId;
-		this.amtRequired = amtRequired;
-		this.tenureYear = tenureYear;
-		this.amtGrantable = amtGrantable;
-		this.computerApproval = computerApproval;
-		this.customerWillingStatus = customerWillingStatus;
-		this.adminApproval = adminApproval;
-		this.status = status;
-	
-		this.userDetail = userDetail;
-	}
-	
-	
 
 	
 }
